@@ -14,6 +14,10 @@ import java.util.TreeMap;
  */
 public class Ejercicio03 {
 
+    /**
+     * Método principal de ejecución del programa del ejercicio 3
+     * @param args
+     */
     public static void main(String[] args) {
         
         //----------------------------------------------

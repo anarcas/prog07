@@ -17,6 +17,10 @@ import java.util.Set;
  */
 public class Ejercicio02 {
 
+    /**
+     * Método principal de ejecución del programa del ejercicio 2
+     * @param args
+     */
     public static void main(String[] args) {
         
         //----------------------------------------------

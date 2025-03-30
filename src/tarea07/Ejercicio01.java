@@ -11,6 +11,10 @@ import java.util.HashSet;
  */
 public class Ejercicio01 {
 
+    /**
+     * Método principal de ejecución del programa del ejercicio 1
+     * @param args
+     */
     public static void main(String[] args) {
 
         //----------------------------------------------
