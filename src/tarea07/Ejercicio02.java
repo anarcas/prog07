@@ -18,7 +18,7 @@ public class Ejercicio02 {
 
     /**
      * Método principal de ejecución del programa del ejercicio 2
-     * @param args
+     * @param args Lista de cadenas de texto que se pasan como argumento
      */
     public static void main(String[] args) {
         
@@ -60,6 +60,7 @@ public class Ejercicio02 {
         modulosMatriculadosUnicos = new HashSet<>();
         
         // Rellenamos las listas de los ciclos con sus módulos correspondientes
+        // Al igual que en el ejercicio anterior, se emplea el método estático asList() de la clase Arrays en lugar de un bucle for. 
         modulosDAW = Arrays.asList(arrayModulosDAW);
         modulosDAM = Arrays.asList(arrayModulosDAM);
         
@@ -72,7 +73,7 @@ public class Ejercicio02 {
         //Instanciamos las variables necesarias
         modulosDAWActualizados = new ArrayList<>();
         
-        // Filtrar módulos de DAW para matrícula y marcar los seleccionados mediante uso de iterador
+        // Se filtran los módulos de DAW para matrícula y se marcan los seleccionados mediante el uso de un iterador.
         iterator = modulosDAW.iterator();
 
         while (iterator.hasNext()) {
@@ -86,7 +87,7 @@ public class Ejercicio02 {
             }
         }
 
-        // Asignar la lista actualizada a modulosDAW
+        // Se asigna la lista actualizada a modulosDAW
         modulosDAW = modulosDAWActualizados;
         
         System.out.println();
@@ -100,7 +101,7 @@ public class Ejercicio02 {
         // Ordenación de la lista por nombre del módulo (alfabético) y la mostramos por pantalla
         System.out.println();  
         System.out.printf ("Ordenación de la lista de módulos de DAM por nombre (alfabético):\n");
-        Collections.sort(modulosDAW, new ComparadorModuloPorNombre());
+        Collections.sort(modulosDAM, new ComparadorModuloPorNombre());
         Utilidades.mostrarModulos(modulosDAM);
                
         // Ordenación de la lista por código del módulo y la mostramos por pantalla

@@ -13,7 +13,7 @@ public class Ejercicio01 {
 
     /**
      * Método principal de ejecución del programa del ejercicio 1
-     * @param args
+     * @param args Lista de cadenas de texto que se pasan como argumento
      */
     public static void main(String[] args) {
 
@@ -62,7 +62,13 @@ public class Ejercicio01 {
         diferenciaModulos = new HashSet<>();
         
         // Rellenamos los conjuntos de los ciclos con sus módulos correspondientes
+        // Si se emplease un buble for se tendría:
+        //        for (String modulo : arrayModulosDAW) {
+        //            modulosDAW.add(modulo);
+        //        }
+        // Pero resulta un código más eficiente si se emplea el método estático asList() de la clase Arrays, tal que:
         modulosDAW.addAll(Arrays.asList(arrayModulosDAW));
+        // Y de la misma manera con los módulos de DAM se tiene:
         modulosDAM.addAll(Arrays.asList(arrayModulosDAM));
         
         // Unión de los dos conjuntos
