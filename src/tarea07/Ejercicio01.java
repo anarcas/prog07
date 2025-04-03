@@ -1,8 +1,8 @@
 package tarea07;
 
-import java.util.Arrays;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Arrays;
 
 /**
  * Ejercicio 1. Creando conjuntos de ciclos DAW y DAM con sus módulos
@@ -24,18 +24,18 @@ public class Ejercicio01 {
         // Constantes
         
         // Variables de entrada
-        String[] arrayModulosDAW = Utilidades.getArrayModulosDAW();
-        String[] arrayModulosDAM = Utilidades.getArrayModulosDAM();
-        
+        String[] arrayModulosDAW;
+        String[] arrayModulosDAM;
+                
         // Variables auxiliares
 
         // Variables de salida
-        Set<String> modulosDAW = new HashSet<>();
-        Set<String> modulosDAM = new HashSet<>();
-        Set<String> unionModulos = new HashSet<>();
-        Set<String> interseccionModulos = new HashSet<>();
-        Set<String> diferenciaModulos = new HashSet<>();
-        
+        Set<String> modulosDAW;
+        Set<String> modulosDAM;
+        Set<String> unionModulos;
+        Set<String> interseccionModulos;
+        Set<String> diferenciaModulos;
+                
         
         //----------------------------------------------
         //                Entrada de datos 
@@ -44,19 +44,26 @@ public class Ejercicio01 {
         System.out.println("CONJUNTOS DE MÓDULOS DE DAW Y DAM");
         System.out.println("--------------------------------");
 
+        
         //----------------------------------------------
         //                  Procesamiento
         //----------------------------------------------
         
         // Inicializamos los arrays que vamos a utilizar
-        modulosDAW.addAll(Arrays.asList(arrayModulosDAW));
-        modulosDAM.addAll(Arrays.asList(arrayModulosDAM));
+        arrayModulosDAW = Utilidades.getArrayModulosDAW();
+        arrayModulosDAM = Utilidades.getArrayModulosDAM();
         
         // Inicialimando las colecciones que vamos autilizar
-        
         // Al usar conjuntos (Set) garantizamos que no se pueden repetir elementos
+        modulosDAW = new HashSet<>();
+        modulosDAM = new HashSet<>();
+        unionModulos = new HashSet<>();
+        interseccionModulos = new HashSet<>();
+        diferenciaModulos = new HashSet<>();
         
         // Rellenamos los conjuntos de los ciclos con sus módulos correspondientes
+        modulosDAW.addAll(Arrays.asList(arrayModulosDAW));
+        modulosDAM.addAll(Arrays.asList(arrayModulosDAM));
         
         // Unión de los dos conjuntos
         unionModulos.addAll(modulosDAW);

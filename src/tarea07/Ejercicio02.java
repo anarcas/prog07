@@ -1,14 +1,13 @@
 package tarea07;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Set;
+import java.util.Arrays;
 
 /**
  * Ejercicio 2. Trabajando con listas de módulos
@@ -30,11 +29,19 @@ public class Ejercicio02 {
         // Constantes
         
         // Variables de entrada
+        String[] arrayModulosDAW;
+        String[] arrayModulosDAM;
+        Set<String> modulosMatriculadosUnicos;
+        List<String> modulosMatriculados;
                 
         // Variables auxiliares
+        List<String> modulosDAWActualizados;
+        Iterator<String> iterator;
+        String modulo;
                         
         // Variables de salida
-                
+        List<String> modulosDAW;
+        List<String> modulosDAM;
         
         //----------------------------------------------
         //               Entrada de datos 
@@ -45,32 +52,43 @@ public class Ejercicio02 {
         System.out.println("-----------------------------");
 
         // Inicializamos los arrays que vamos a utilizar
-        List<String> modulosMatriculados = new ArrayList<>();
-        Set<String> modulosMatriculadosUnicos = new HashSet<>();
+        arrayModulosDAW = Utilidades.getArrayModulosDAW();
+        arrayModulosDAM = Utilidades.getArrayModulosDAM();
         
         // Instanciamos las colecciones para trabajar con ellas
-        List<String> modulosDAW = new ArrayList<>(Arrays.asList(Utilidades.getArrayModulosDAW()));
-        List<String> modulosDAM = new ArrayList<>(Arrays.asList(Utilidades.getArrayModulosDAM()));
+        modulosMatriculados = new ArrayList<>();
+        modulosMatriculadosUnicos = new HashSet<>();
         
         // Rellenamos las listas de los ciclos con sus módulos correspondientes
+        modulosDAW = Arrays.asList(arrayModulosDAW);
+        modulosDAM = Arrays.asList(arrayModulosDAM);
+        
 
         
         //----------------------------------------------
         //               Procesamiento
         //----------------------------------------------
 
-        // Filtrar módulos de DAW para matrícula y marcar los seleccionados
-        ListIterator<String> iterator = modulosDAW.listIterator();
+        //Instanciamos las variables necesarias
+        modulosDAWActualizados = new ArrayList<>();
+        
+        // Filtrar módulos de DAW para matrícula y marcar los seleccionados mediante uso de iterador
+        iterator = modulosDAW.iterator();
+
         while (iterator.hasNext()) {
-            String modulo = iterator.next();
+            modulo = iterator.next();
             if (!modulo.contains("i")) {
                 modulosMatriculados.add(modulo);
                 modulosMatriculadosUnicos.add(modulo);
-                iterator.set("**" + modulo + "**");
+                modulosDAWActualizados.add("**" + modulo + "**");
+            } else {
+                modulosDAWActualizados.add(modulo);
             }
         }
+
+        // Asignar la lista actualizada a modulosDAW
+        modulosDAW = modulosDAWActualizados;
         
-        //Instanciamos las variables necesarias
         System.out.println();
         System.out.printf("Contenido inicial de la lista de módulos de DAW:  \n");
         Utilidades.mostrarModulos(modulosDAW);
@@ -79,21 +97,18 @@ public class Ejercicio02 {
         System.out.printf("Contenido inicial de la lista de módulos de DAM:  \n");
         Utilidades.mostrarModulos(modulosDAM);
 
-        // Recorremos la lista de modulos de DAW
-                
         // Ordenación de la lista por nombre del módulo (alfabético) y la mostramos por pantalla
         System.out.println();  
         System.out.printf ("Ordenación de la lista de módulos de DAM por nombre (alfabético):\n");
-        modulosDAM.sort(new ComparadorModuloPorNombre());
+        Collections.sort(modulosDAW, new ComparadorModuloPorNombre());
         Utilidades.mostrarModulos(modulosDAM);
                
         // Ordenación de la lista por código del módulo y la mostramos por pantalla
         System.out.println();  
         System.out.printf ("Ordenación de la lista de módulos de DAM por código:\n");
-        modulosDAM.sort(new ComparadorModuloPorCodigo());
+        Collections.sort(modulosDAM, new ComparadorModuloPorCodigo());
         Utilidades.mostrarModulos(modulosDAM);
 
-        
         //----------------------------------------------
         //            Salida de resultados
         //----------------------------------------------

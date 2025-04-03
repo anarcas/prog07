@@ -27,12 +27,16 @@ public class Ejercicio03 {
         // Constantes
         
         // Variables de entrada
-      
+        List<String> codigosModulosDAW;
+                
         // Variables auxiliares
         int curso;
         int codigoModulo;
+        String[] partes;
+        List<Integer> listaModulos;
      
         // Variables de salida
+        Map<Integer, List<Integer>> mapaCursos;
 
 
         //----------------------------------------------
@@ -48,20 +52,30 @@ public class Ejercicio03 {
         //                  Procesamiento
         //----------------------------------------------
         
+        // Rellenamos las listas de los ciclos con sus módulos correspondientes
+        codigosModulosDAW = Arrays.asList(Utilidades.getArrayCodigosModulosDAW());
+        
         // Instanciamos las variables con las que vamos a trabajar
-        List<String> codigosModulosDAW = Arrays.asList(Utilidades.getArrayCodigosModulosDAW());
-        Map<Integer, List<Integer>> mapaCursos = new TreeMap<>();
+        mapaCursos = new TreeMap<>();
          
         // Recorremos la lista de códigos del ciclo de DAW (curso-codigo de modulo)
         // y creamos el mapa con cada curso y los codigos de los modulos correspondientes
         for (String codigo : codigosModulosDAW) {
-            String[] partes = codigo.split("-");
+            partes = codigo.split("-");
             curso = Integer.parseInt(partes[0]);
             codigoModulo = Integer.parseInt(partes[1]);
 
-            // Agregar el código del módulo a la lista correspondiente en el mapa
-            mapaCursos.putIfAbsent(curso, new ArrayList<>());
-            mapaCursos.get(curso).add(codigoModulo);
+            // Comprobamos si el curso ya está en el mapa
+            listaModulos = mapaCursos.get(curso);
+
+            // Si no existe el curso en el mapa, inicializamos una nueva lista
+            if (listaModulos == null) {
+                listaModulos = new ArrayList<>();
+                mapaCursos.put(curso, listaModulos);
+            }
+
+            // Añadimos el código del módulo a la lista correspondiente
+            listaModulos.add(codigoModulo);
         }
         
         
@@ -69,10 +83,10 @@ public class Ejercicio03 {
         //           Salida de resultados
         //----------------------------------------------
         
-        System.out.printf("Contenido del mapa de códigos de módulos organizados por cursos:\n\n");
-        for (Map.Entry<Integer, List<Integer>> entry : mapaCursos.entrySet()) {
-            System.out.printf("Curso %d: %s\n", entry.getKey(), entry.getValue());
+        // Se usa el método keySet() para recorrer las claves del mapa
+        for (Integer course : mapaCursos.keySet()) {
+            // Se imprime en pantalla empleando el método printf()
+            System.out.printf("Curso %d: %s\n", course, mapaCursos.get(course));
         }
-        
     }
 }
